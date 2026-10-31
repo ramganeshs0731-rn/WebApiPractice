@@ -14,6 +14,10 @@ public interface IDepartmentService
 
     Task<DepartmentDeleteResult> DeleteDepartmentAsync(int id);
 }
+Task<PagedResult<DepartmentDto>> GetFilteredAndPagedDepartmentsAsync(
+    string? search,
+    int pageNumber,
+    int pageSize);
 
 public enum DepartmentDeleteResult
 {
