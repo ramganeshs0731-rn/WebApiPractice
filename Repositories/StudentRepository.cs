@@ -56,3 +56,11 @@ public class StudentRepository : IStudentRepository
         await _context.SaveChangesAsync();
     }
 }
+ public async Task<List<Student>> SearchByNameAsync(string search)
+    {
+        return await _context.Students
+            .Include(s => s.Department)
+            .Where(s => s.Name.Contains(search))
+            .ToListAsync();
+    }
+}
